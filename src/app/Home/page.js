@@ -4,12 +4,10 @@ import Todo from "../components/todo";
 import { ThemeContext } from "../contexts/themeContext";
 import { useState } from "react";
 const Page = () => { 
-
-    const [theme, setTheme] = useState()
-    
-    return (
+    const [theme, setTheme] = useState('light')
+      return (
         <ThemeContext.Provider value={{theme, setTheme}}>
-        <div  className={`flex h-auto w-auto min-h-svh ${theme === "light" ? "bg-light-background" : "bg-dark-background"}`}>
+        <div  className={`flex h-auto w-auto min-h-svh dark:bg-dark-background bg-white "}`}>
             {/* Construindo interface inicial */}
             <div className="h-1/2 w-1/4">
                 <div className=" w-full flex justify-end">
@@ -18,7 +16,7 @@ const Page = () => {
             </div>
             <div className="h-1/2 w-3/4">
                 <h1 className="h-3">Estou aqui</h1>
-                <Todo name="artu"></Todo>
+                <Todo title="artu"></Todo>
             </div>
         </div>
         </ThemeContext.Provider>
