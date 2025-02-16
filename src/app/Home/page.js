@@ -15,7 +15,6 @@ const Page = () => {
                 </div>
             </div>
             <div className="h-1/2 w-3/4">
-                <h1 className="h-3">Estou aqui</h1>
                 <Todo title="artu"></Todo>
             </div>
         </div>
