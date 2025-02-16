@@ -1,9 +1,14 @@
-const ThemeToggle = (props) => {
+import { useContext } from "react";
+import { ThemeContext } from "../contexts/themeContext";
+
+const ThemeToggle = () => {
+  const {theme, setTheme }= useContext(ThemeContext)
   return (
-    <button onClick={props.changeTheme} className="p-2 rounded-full bg-light-card transition border border-dark-background">
+    
+    <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}  className={theme} class="p-2 rounded-full bg-light-card transition border border-dark-background">
       <img
-        src={props.theme === "light" ? "/assets/darkTheme.png" : "/assets/light.png"}
-        alt={props.theme === "light" ? "Modo Escuro" : "Modo Claro"}
+        src={theme === "light" ? "/assets/darkTheme.png" : "/assets/light.png"}
+        alt={theme === "light" ? "Modo Escuro" : "Modo Claro"}
         className={`w-6 h-6 p-0`}
 
       />
