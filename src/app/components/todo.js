@@ -1,18 +1,27 @@
 import { useContext } from "react";
 import { ThemeContext } from "../contexts/themeContext";
 import { MdDelete, MdDone, MdEdit } from "react-icons/md";
+import TodosList from "../service/api/todoService";
 
-const Todo = () => {
+const Todo = (props) => {
     const { theme } = useContext(ThemeContext)
-    return (
-        <div className={`flex max-w-96 h-48  border border-black `}>
-            { /* lado esquerdo container:) */}
-            <div className="w-3/4 border border-red">
 
+    return (
+        {TodosList.map((todo) => (
+        <div className={`flex max-w-96 h-48  border border-dark-background dark:border-light-background `}>
+            { /* lado esquerdo container:) */}
+            <div className="w-3/4 h-full m-2">
+                { /* superior container) */}
+                <div className="h-auto w-auto">
+                    <h1 className="w-full h-auto">{props.title} </h1>
+                </div>
+
+                { /* inferior container) */}
+                <div className="h-auto w-auto"></div>
             </div>
 
             { /* lado direito container:) */}
-            <div className=" flex flex-col w-1/4 h-full justify-between border border-red">
+            <div className=" flex flex-col w-1/4 h-full justify-between ">
 
                 { /* container superior:) */}
                 <div className=" flex flex-col items-end h-auto w-auto m-2 ">
@@ -34,6 +43,5 @@ const Todo = () => {
                 </div>
             </div>
         </div>
-    )
-}
-export default Todo
+))})}
+export default Todo;
