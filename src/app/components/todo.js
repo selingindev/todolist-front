@@ -16,7 +16,10 @@ const Todo = () => {
         getTodos();
     }, []);
 
-
+    const handleDelete = async (id) => {
+        const updateTodos = await deleteTodo(id);
+        setTodos(updateTodos)
+    };
     return (
         <div>
             {todos.map((todo, index) => (
@@ -57,11 +60,8 @@ const Todo = () => {
             ))}
         </div>
     );
+
 };
 
 export default Todo;
 
-const handleDelete = async (id) => {
-    await deleteTodo(id);
-    await getTodos();  // Atualiza a lista de todos
-};
