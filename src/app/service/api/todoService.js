@@ -1,4 +1,4 @@
-
+const globalUrl = await fetch('http://localhost:8080/todos');
 
 export async function fetchTodos() {
   const urlData = await fetch('http://localhost:8080/todos');
@@ -38,12 +38,20 @@ export async function editTodo(id, data) {
  })
  }
 
-export async function deleteTodo(id) {
-  await fetch(`http://localhost:8080/todos/${id}`, {
+ export async function deleteTodo(id) {
+  const response = await fetch(`http://localhost:8080/todos/${id}`, {
     method: 'DELETE',
     headers: {
         'Content-Type': 'application/json'
     }
-});
-  
+  });
+
+  if (response.ok) {
+
+    const updatedTodos = await response.json();
+    return updatedTodos;
+  } else {
+    console.error('Erro ao deletar:', response.status);
+    return [];
+  }
 }
