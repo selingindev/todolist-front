@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IoAddCircleSharp } from "react-icons/io5";
 import { CiCircleRemove } from "react-icons/ci";
 
@@ -7,28 +7,29 @@ import { ModalContext, ThemeContext } from "../contexts/Context";
 
 
 const NovaTarefaButton = () => {
-    const [isModalOpen, setIsModalOpen] = useContext(ModalContext);
+    const { modalOpen, setModalOpen } = useContext(ModalContext);
     const { theme } = useContext(ThemeContext)
 
+   
     const handleOpenModal = () => {
-        setIsModalOpen(true);
+        setModalOpen(true);
     };
 
-     const handleCloseModal = () => {
-        setIsModalOpen(false);
+    const handleCloseModal = () => {
+        setModalOpen(false);
     };
 
     return (
         <>
 
-            <button onClick={isModalOpen == false ? handleOpenModal : handleCloseModal}>
+            <button onClick={modalOpen == false ? handleOpenModal : handleCloseModal}>
                 {
-                    isModalOpen == false ?
-                        <IoAddCircleSharp size={40} color={theme == 'dark' ? 'white' : "black"} /> : <CiCircleRemove size={40} color={theme == 'dark' ? 'white' : "black"} />
+                    modalOpen == false ? <IoAddCircleSharp size={40} color={theme == 'dark' ? 'white' : "black"} />
+                        : <CiCircleRemove size={40} color={theme == 'dark' ? 'white' : "black"} />
                 }
 
             </button>
-            {isModalOpen == true ? <ModalAddTodo isModalOpen={isModalOpen}/> : null}
+            {modalOpen == true ? <ModalAddTodo /> : null}
         </>
     );
 };
