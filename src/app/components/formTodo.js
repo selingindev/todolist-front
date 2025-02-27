@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { postTodo } from "../service/api/todoService";
+import { handleCloseModal } from "./novaTarefaButton";
 
 const FormTodo = () => {
     const [title, setTitle] = useState('');
@@ -7,6 +8,7 @@ const FormTodo = () => {
     const [prioridade, setPrioridade] = useState(0);
 
     const heandleSubmit = async (e) => {
+
         e.preventDefault();
         if (title.trim() == "" || desc.trim() == "" || prioridade.trim() == "") return;
 
@@ -22,6 +24,8 @@ const FormTodo = () => {
             setTitle("");
             setDesc("");
             setPrioridade("")
+            handleCloseModal();
+            return 
         } catch (error) {
             console.error("Erro ao adicionar tarefa:", error);
         }

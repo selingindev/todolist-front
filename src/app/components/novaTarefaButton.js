@@ -3,17 +3,18 @@ import { IoAddCircleSharp } from "react-icons/io5";
 import { CiCircleRemove } from "react-icons/ci";
 
 import ModalAddTodo from "../components/modalAddTodo";
-import { ThemeContext } from "../contexts/themeContext";
+import { ModalContext, ThemeContext } from "../contexts/Context";
+
 
 const NovaTarefaButton = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useContext(ModalContext);
     const { theme } = useContext(ThemeContext)
 
     const handleOpenModal = () => {
         setIsModalOpen(true);
     };
 
-    const handleCloseModal = () => {
+     const handleCloseModal = () => {
         setIsModalOpen(false);
     };
 
@@ -27,9 +28,10 @@ const NovaTarefaButton = () => {
                 }
 
             </button>
-            {isModalOpen == true ? <ModalAddTodo /> : null}
+            {isModalOpen == true ? <ModalAddTodo isModalOpen={isModalOpen}/> : null}
         </>
     );
 };
 
 export default NovaTarefaButton;
+
