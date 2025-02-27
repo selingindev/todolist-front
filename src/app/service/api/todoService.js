@@ -1,5 +1,3 @@
-const globalUrl = await fetch('http://localhost:8080/todos');
-
 export async function fetchTodos() {
   const urlData = await fetch('http://localhost:8080/todos');
   try {
@@ -18,21 +16,30 @@ export async function fetchTodos() {
 }
 
 export async function postTodo(data) {
-  const urlData = await fetch('http://localhost:8080/todos');
-  fetch(urlData, {
+  
+  const urlData = await fetch('http://localhost:8080/todos',
+  {
     method: "POST",
     headers: {
-      'Content-Type': 'application.json'
+      'Content-Type': 'application/json'
     },
-    body: json.stringify({ data })
-  })
+    body: JSON.stringify(data)
+  });
+
+  if(urlData.ok){
+    const updatedTodos = await urlData.json();
+    return updatedTodos;
+  } else {
+    console.error('Erro ao deletar:', response.status);
+    return [];
+  }
 }
 
 export async function editTodo(id, data) {
   await fetch(`http://localhost:8080/todos/${id}`, {
     method: "PUT",
     headers: {
-      'Content-Type': 'application.json'
+      'Content-Type': 'application/json'
     },
     body: json.stringify({ id, data })
   })
