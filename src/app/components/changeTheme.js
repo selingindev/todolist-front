@@ -12,7 +12,7 @@ const ThemeToggle = () => {
   
   return (
     
-    <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} class="p-2 rounded-full bg-light-card transition border border-dark-background dark:border-red-600">
+    <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} className="p-2 rounded-full bg-light-card transition border border-dark-background dark:border-red-600">
       <img
         src={theme === "light" ? "/darkTheme.png" : "/light.png"}
         alt={theme === "light" ? "Modo Escuro" : "Modo Claro"}
