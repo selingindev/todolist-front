@@ -1,6 +1,7 @@
 'use client'
 import ThemeToggle from "../components/changeTheme";
 import NovaTarefaButton from "../components/novaTarefaButton";
+import Todo from "../components/todo";
 import { ThemeContext } from "../contexts/themeContext";
 import { useState } from "react";
 const Page = () => { 
@@ -16,6 +17,7 @@ const Page = () => {
             </div>
             <div className="h-1/2 w-3/4">
               <NovaTarefaButton/>
+              <Todo/>
             </div>
         </div>
         </ThemeContext.Provider>
