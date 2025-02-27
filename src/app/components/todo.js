@@ -1,12 +1,13 @@
 'use client'
 import { useContext, useEffect, useState } from "react";
-import { ThemeContext } from "../contexts/themeContext";
+import { ThemeContext } from "../contexts/Context";
 import { MdDelete, MdDone, MdEdit } from "react-icons/md";
 import { deleteTodo, fetchTodos } from "../service/api/todoService";
 
 const Todo = () => {
     const { theme } = useContext(ThemeContext);
     const [todos, setTodos] = useState([]);
+    
     const getTodos = async () => {
             const data = await fetchTodos(); 
             setTodos(data);
@@ -20,6 +21,8 @@ const Todo = () => {
         const updateTodos = await deleteTodo(id);
         setTodos(updateTodos)
     };
+
+
     return (
         <div>
             {todos.map((todo, index) => (

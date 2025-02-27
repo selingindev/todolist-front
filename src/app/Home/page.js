@@ -2,7 +2,7 @@
 import ThemeToggle from "../components/changeTheme";
 import NovaTarefaButton from "../components/novaTarefaButton";
 import Todo from "../components/todo";
-import { ThemeContext } from "../contexts/themeContext";
+import { ThemeContext } from "../contexts/Context";
 import { useState } from "react";
 const Page = () => { 
     const [theme, setTheme] = useState('light')
