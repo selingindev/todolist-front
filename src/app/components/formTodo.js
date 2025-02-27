@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { postTodo } from "../service/api/todoService";
-import { handleCloseModal } from "./novaTarefaButton";
+import { ModalContext, TodoContext } from "../contexts/Context";
+
 
 const FormTodo = () => {
+    let {setModalOpen} = useContext(ModalContext);
+    const {setTodos} = useContext(TodoContext)
+    
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
     const [prioridade, setPrioridade] = useState(0);
+
+     const handleCreate = async (data) => {
+            const updateTodos = await postTodo(data);
+            setTodos(updateTodos)
+        };
 
     const heandleSubmit = async (e) => {
 
@@ -19,13 +28,12 @@ const FormTodo = () => {
             isDone: false
         }
         try {
-            console.log(data)
-            await postTodo(data);
+            handleCreate(data);
             setTitle("");
             setDesc("");
             setPrioridade("")
-            handleCloseModal();
-            return 
+            setModalOpen(false)
+            return  
         } catch (error) {
             console.error("Erro ao adicionar tarefa:", error);
         }

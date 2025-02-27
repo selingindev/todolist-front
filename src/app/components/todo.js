@@ -1,12 +1,12 @@
 'use client'
 import { useContext, useEffect, useState } from "react";
-import { ThemeContext } from "../contexts/Context";
+import { ThemeContext, TodoContext } from "../contexts/Context";
 import { MdDelete, MdDone, MdEdit } from "react-icons/md";
 import { deleteTodo, fetchTodos } from "../service/api/todoService";
 
 const Todo = () => {
     const { theme } = useContext(ThemeContext);
-    const [todos, setTodos] = useState([]);
+    const {todos, setTodos} = useContext(TodoContext);
     
     const getTodos = async () => {
             const data = await fetchTodos(); 
@@ -15,13 +15,12 @@ const Todo = () => {
 
     useEffect(() => {
         getTodos();
-    }, []);
+    },);
 
     const handleDelete = async (id) => {
         const updateTodos = await deleteTodo(id);
         setTodos(updateTodos)
     };
-
 
     return (
         <div>
@@ -47,6 +46,7 @@ const Todo = () => {
                             <button onClick={() => handleDelete(todo.id)} className="flex justify-end w-auto h-auto m-1">
                                 <MdDelete color={theme === 'light' ? "#212121" : "#E0E0E0"} size={30} />
                             </button>
+                            
                             <button onClick={() =>deleteTodo({index})('Editar', todo.id)} className="flex justify-end w-auto h-auto m-1">
                                 <MdEdit color={theme === 'light' ? "#212121" : "#E0E0E0"} size={30} />
                             </button>
