@@ -15,7 +15,6 @@ const NovaTarefaButton = () => {
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
-        console.log(theme)
     };
 
     return (
