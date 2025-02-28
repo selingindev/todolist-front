@@ -36,14 +36,23 @@ export async function postTodo(data) {
 }
 
 export async function editTodo(id, data) {
-  await fetch(`http://localhost:8080/todos/${id}`, {
+  const response = await fetch(`http://localhost:8080/todos/${id}`, {
     method: "PUT",
     headers: {
       'Content-Type': 'application/json'
     },
-    body: json.stringify({ id, data })
+    body: JSON.stringify({ id, data })
   })
+  if (response.ok) {
+
+    const updatedTodos = await response.json();
+    return updatedTodos;
+  } else {
+    console.error('Erro ao deletar:', response.status);
+    return [];
+  }
 }
+
 
 export async function deleteTodo(id) {
   const response = await fetch(`http://localhost:8080/todos/${id}`, {
