@@ -4,58 +4,58 @@ import { ContentModalContext, IdTodoContext, ModalContext, TodoContext } from ".
 
 
 const FormTodo = () => {
-    let {setModalOpen} = useContext(ModalContext);
-    const {customFunction} = useContext(ContentModalContext)
-    const {setTodos} = useContext(TodoContext)
-    const {id} = useContext(IdTodoContext)
+    let { setModalOpen } = useContext(ModalContext);
+    const { customFunction } = useContext(ContentModalContext)
+    const { setTodos } = useContext(TodoContext)
+    const { id } = useContext(IdTodoContext)
     const [title, setTitle] = useState('')
     const [desc, setDesc] = useState('')
     const [prioridade, setPrioridade] = useState(0)
-  
 
-     const handleCreate = async (data) => {
-            const updateTodos = await postTodo(data);
-            setTodos(updateTodos)
-        };
+
+    const handleCreate = async (data) => {
+        const updateTodos = await postTodo(data);
+        setTodos(updateTodos)
+    };
 
     const handleEdit = async (id, data) => {
-            const updateTodos = await editTodo(id, data)
-            setTodos(updateTodos)
-        }
-    
+        const updateTodos = await editTodo(id, data)
+        setTodos(updateTodos)
+    }
 
-        const heandleSubmit = async (e) => {
 
-            e.preventDefault();
-            if (title.trim() == "" || desc.trim() == "" ) return;
-    
-            let data = {
-                id: null,
-                title: title,
-                desc: desc,
-                prioridade: prioridade,
-                isDone: false,
-            }
-            try {
-                if (customFunction === "Edit") {
-                    {console.log(id)}
-                    data.id = id;
-                    await handleEdit(id, data); 
-                    
-                } else if (customFunction === "Create") {
-                    await handleCreate(data);
-                }
-                
-                setTitle("");
-                setDesc("");
-                setPrioridade("");
-                setModalOpen(false);
-                return;   
-            } catch (error) {
-                console.error("Erro ao adicionar tarefa:", error);
-            }
-            
+    const heandleSubmit = async (e) => {
+
+        e.preventDefault();
+        if (title.trim() == "" || desc.trim() == "") return;
+
+        let data = {
+            id: null,
+            title: title,
+            desc: desc,
+            prioridade: prioridade,
+            isDone: false,
         }
+        try {
+            if (customFunction === "Edit") {
+                { console.log(id) }
+                data.id = id;
+                await handleEdit(id, data);
+
+            } else if (customFunction === "Create") {
+                await handleCreate(data);
+            }
+
+            setTitle("");
+            setDesc("");
+            setPrioridade("");
+            setModalOpen(false);
+            return;
+        } catch (error) {
+            console.error("Erro ao adicionar tarefa:", error);
+        }
+
+    }
     return (
         <form onSubmit={heandleSubmit} className=" h-full w-full p-4 border border-cyan-700">
             <div className="w-full h-3/4 flex flex-col justify-between">
@@ -70,7 +70,7 @@ const FormTodo = () => {
                 </div>
             </div>
             <div className="w-full h-1/4">
-                <button onClick={() => {heandleSubmit }} className="w-full h-full bg-fuchsia-50"/>
+                <button onClick={() => { heandleSubmit }} className="w-full h-full bg-fuchsia-50" />
             </div>
         </form>
     )

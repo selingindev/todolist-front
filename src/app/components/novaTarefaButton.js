@@ -11,30 +11,30 @@ import Modal from "./modal";
 const NovaTarefaButton = () => {
     const { modalOpen, setModalOpen } = useContext(ModalContext);
     const { theme } = useContext(ThemeContext);
-    const {setCustomFunction} = useContext(ContentModalContext)
+    const { setCustomFunction } = useContext(ContentModalContext)
 
-    
+
     const callback = () => {
         setCustomFunction("Create");
-      
+
         if (modalOpen === false) {
-          setModalOpen(true);
+            setModalOpen(true);
         } else {
-          setModalOpen(false);
+            setModalOpen(false);
         }
-      };
-      
+    };
+
     return (
         <>
 
-            <div 
-                onClick={ callback 
-                } 
-            
-                  className="cursor-pointer inline-flex items-center"
+            <div
+                onClick={callback
+                }
+
+                className="cursor-pointer inline-flex items-center"
             >
                 {
-                    modalOpen === false 
+                    modalOpen === false
                         ? <IoAddCircleSharp size={40} color={theme === 'dark' ? 'white' : "black"} />
                         : <CiCircleRemove size={40} color={theme === 'dark' ? 'white' : "black"} />
                 }
