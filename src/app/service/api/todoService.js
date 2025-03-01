@@ -16,17 +16,17 @@ export async function fetchTodos() {
 }
 
 export async function postTodo(data) {
-  
-  const urlData = await fetch('http://localhost:8080/todos',
-  {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  });
 
-  if(urlData.ok){
+  const urlData = await fetch('http://localhost:8080/todos',
+    {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+
+  if (urlData.ok) {
     const updatedTodos = await urlData.json();
     return updatedTodos;
   } else {
@@ -47,7 +47,7 @@ export async function editTodo(id, data) {
       desc: data.desc,
       prioridade: data.prioridade,
       isDone: data.isDone,
-  }),
+    }),
   })
   if (response.ok) {
 
@@ -56,7 +56,7 @@ export async function editTodo(id, data) {
   } else {
     console.error('Erro ao deletar:', response.status);
 
-    return  []
+    return []
   }
 }
 
