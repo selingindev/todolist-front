@@ -36,7 +36,7 @@ export async function postTodo(data) {
 }
 
 export async function editTodo(id, data) {
-  const response = await fetch(`http://localhost:8080/todos/${id}`, {
+  const response = await fetch(`http://localhost:8080/todos/${id}`,{
     method: "PUT",
     headers: {
       'Content-Type': 'application/json'
@@ -46,11 +46,14 @@ export async function editTodo(id, data) {
       title: data.title,
       desc: data.desc,
       prioridade: data.prioridade,
-      isDone: data.isDone,
+      done: data.isDone,
+      
     }),
   })
+  console.log(response)
   if (response.ok) {
-
+    
+    
     const updatedTodos = await response.json();
     return updatedTodos;
   } else {
