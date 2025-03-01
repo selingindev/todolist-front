@@ -31,7 +31,7 @@ export async function postTodo(data) {
     return updatedTodos;
   } else {
     console.error('Erro ao deletar:', response.status);
-    return [];
+    return []
   }
 }
 
@@ -41,7 +41,13 @@ export async function editTodo(id, data) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ id, data })
+    body: JSON.stringify({
+      id: id,
+      title: data.title,
+      desc: data.desc,
+      prioridade: data.prioridade,
+      isDone: data.isDone,
+  }),
   })
   if (response.ok) {
 
@@ -49,7 +55,8 @@ export async function editTodo(id, data) {
     return updatedTodos;
   } else {
     console.error('Erro ao deletar:', response.status);
-    return [];
+
+    return  []
   }
 }
 
@@ -68,6 +75,7 @@ export async function deleteTodo(id) {
     return updatedTodos;
   } else {
     console.error('Erro ao deletar:', response.status);
-    return [];
+    return []
+
   }
 }
