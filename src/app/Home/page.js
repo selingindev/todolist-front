@@ -20,14 +20,15 @@ const Page = () => {
               <div className={`flex h-auto w-auto min-h-svh dark:bg-dark-background bg-white "}`}>
                 {/* Construindo interface inicial */}
                 <div className="h-1/2 w-1/4">
-                  <div className=" w-full flex justify-end">
+                  <div className=" w-full flex flex-col justify-end">
                     <ThemeToggle />
+                    <Todo filter={true}/>
                   </div>
                 </div>
                 <div className="h-1/2 w-3/4">
                   <NovaTarefaButton />
 
-                  <Todo />
+                  <Todo filter={false}/>
 
                 </div>
               </div>
