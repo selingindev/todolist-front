@@ -1,18 +1,18 @@
- 
+
 import { useContext } from "react";
 import { ThemeContext } from "../contexts/Context";
-import { useEffect  } from "react";
+import { useEffect } from "react";
 
 const ThemeToggle = () => {
-  const {theme, setTheme}= useContext(ThemeContext)
-  useEffect( () => {
+  const { theme, setTheme } = useContext(ThemeContext)
+  useEffect(() => {
     document.querySelector('html').classList.remove('dark', 'light')
     document.querySelector('html').classList.add(theme)
-},[theme]) 
-  
+  }, [theme])
+
   return (
-    
-    <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} className="p-2 rounded-full bg-light-card transition border border-dark-background dark:border-red-600">
+    <div>    
+      <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} className="p-2 rounded-full bg-light-card transition border border-dark-background dark:border-red-600">
       <img
         src={theme === "light" ? "/darkTheme.png" : "/light.png"}
         alt={theme === "light" ? "Modo Escuro" : "Modo Claro"}
@@ -20,6 +20,8 @@ const ThemeToggle = () => {
 
       />
     </button>
+    </div>
+
   );
 };
 
