@@ -38,7 +38,6 @@ const FormTodo = () => {
         }
         try {
             if (customFunction === "Edit") {
-                { console.log(id) }
                 data.id = id;
                 await handleEdit(id, data);
 
