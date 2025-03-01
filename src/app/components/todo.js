@@ -6,7 +6,7 @@ import { deleteTodo, fetchTodos } from "../service/api/todoService";
 
 
 
-const Todo = () => {
+const Todo = (props) => {
     const { theme } = useContext(ThemeContext);
     const {todos, setTodos} = useContext(TodoContext);
     const {customFunction, setCustomFunction} = useContext(ContentModalContext)
@@ -38,7 +38,9 @@ const Todo = () => {
     
     return (
         <div>
-            {todos.map((todo, index) => (
+            {todos
+            .filter((todo) => todo.done === props.filter)
+            .map((todo, index) => (
                 <div key={index} className={`flex max-w-96 h-48 border border-dark-background dark:border-light-background`}>
                     {/* lado esquerdo container */}
                     <div className="w-3/4 h-full m-2">
