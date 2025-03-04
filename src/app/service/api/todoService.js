@@ -82,3 +82,21 @@ export async function deleteTodo(id) {
 
   }
 }
+
+export async function getTodo(id) {
+  const response = await fetch(`http://localhost:8080/todos/${id}`)
+   try {
+    if (response.ok) {
+      const todo = await response.json();
+      return todo;
+    } else {
+      console.error('Erro na requisição:', response.status);
+      return [];
+    }
+  } catch (error) {
+    console.error('Erro na requisição:', error);
+    return [];
+  }
+
+  }
+  
