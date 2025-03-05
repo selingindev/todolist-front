@@ -1,7 +1,6 @@
 'use client'
 import LeftSide from "../components/layout/leftSide";
-import NovaTarefaButton from "../components/novaTarefaButton";
-import Todo from "../components/todo";
+import RightSide from "../components/layout/rightSide";
 import { ModalContext, ThemeContext, TodoContext, ContentModalContext, IdTodoContext } from "../contexts/Context";
 import { useState } from "react";
 const Page = () => {
@@ -19,13 +18,7 @@ const Page = () => {
             <IdTodoContext.Provider value={{ id, setId }}>
               <div className={`flex h-auto w-auto min-h-svh dark:bg-dark-background bg-white "}`}>
                   <LeftSide></LeftSide>
-    
-                <div className="h-full w-3/4">
-                  <NovaTarefaButton />
-
-                  <Todo filter={false} />
-
-                </div>
+                  <RightSide></RightSide>        
               </div>
             </IdTodoContext.Provider>
           </TodoContext.Provider>
