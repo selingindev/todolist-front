@@ -1,5 +1,5 @@
 'use client'
-import ThemeToggle from "../components/changeTheme";
+import LeftSide from "../components/layout/leftSide";
 import NovaTarefaButton from "../components/novaTarefaButton";
 import Todo from "../components/todo";
 import { ModalContext, ThemeContext, TodoContext, ContentModalContext, IdTodoContext } from "../contexts/Context";
@@ -18,17 +18,12 @@ const Page = () => {
           <TodoContext.Provider value={{ todos, setTodos }}>
             <IdTodoContext.Provider value={{ id, setId }}>
               <div className={`flex h-auto w-auto min-h-svh dark:bg-dark-background bg-white "}`}>
-                {/* Construindo interface inicial */}
-                <div className="h-1/2 w-1/4">
-                  <div className=" w-full flex flex-col justify-end">
-                    <ThemeToggle />
-                    <Todo filter={true}/>
-                  </div>
-                </div>
-                <div className="h-1/2 w-3/4">
+                  <LeftSide></LeftSide>
+    
+                <div className="h-full w-3/4">
                   <NovaTarefaButton />
 
-                  <Todo filter={false}/>
+                  <Todo filter={false} />
 
                 </div>
               </div>
