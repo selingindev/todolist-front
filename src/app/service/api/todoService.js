@@ -36,7 +36,7 @@ export async function postTodo(data) {
 }
 
 export async function editTodo(id, data) {
-  const response = await fetch(`http://localhost:8080/todos/${id}`,{
+  const response = await fetch(`http://localhost:8080/todos/${id}`, {
     method: "PUT",
     headers: {
       'Content-Type': 'application/json'
@@ -47,13 +47,13 @@ export async function editTodo(id, data) {
       desc: data.desc,
       prioridade: data.prioridade,
       done: data.isDone,
-      
+
     }),
   })
   console.log(response)
   if (response.ok) {
-    
-    
+
+
     const updatedTodos = await response.json();
     return updatedTodos;
   } else {
@@ -85,7 +85,7 @@ export async function deleteTodo(id) {
 
 export async function getTodo(id) {
   const response = await fetch(`http://localhost:8080/todos/${id}`)
-   try {
+  try {
     if (response.ok) {
       const todo = await response.json();
       return todo;
@@ -98,5 +98,5 @@ export async function getTodo(id) {
     return [];
   }
 
-  }
-  
+}
+

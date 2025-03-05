@@ -1,4 +1,4 @@
-import { useContext, useState,  useEffect} from "react";
+import { useContext, useState, useEffect } from "react";
 import { editTodo, getTodo, postTodo } from "../service/api/todoService";
 import { ContentModalContext, IdTodoContext, ModalContext, TodoContext } from "../contexts/Context";
 
@@ -15,20 +15,20 @@ const FormTodo = () => {
         const updateTodos = await postTodo(data);
         setTodos(updateTodos)
     };
-    
-   const dataTodo  = async () => {
-        if(customFunction === "Edit"){
+
+    const dataTodo = async () => {
+        if (customFunction === "Edit") {
             const dataTodo = await getTodo(id);
-             setDesc(dataTodo.desc)
-             setPrioridade(dataTodo.prioridade)
-             setTitle(dataTodo.title)
-            }
-         return 
+            setDesc(dataTodo.desc)
+            setPrioridade(dataTodo.prioridade)
+            setTitle(dataTodo.title)
         }
-    
-        useEffect(() => {
-            dataTodo(); 
-        }, []);
+        return
+    }
+
+    useEffect(() => {
+        dataTodo();
+    }, []);
 
     const handleEdit = async (id, data) => {
         const updateTodos = await editTodo(id, data)
@@ -41,10 +41,11 @@ const FormTodo = () => {
         if (customFunction === "Create") {
             if (title.trim() === "") {
                 alert("Impossível criar uma tarefa NULA")
-                return; 
-            }}
-        
-        
+                return;
+            }
+        }
+
+
 
         let data = {
             id: null,
@@ -79,7 +80,7 @@ const FormTodo = () => {
                     <input type="text" value={title} placeholder="Digite o titulo da Tarefa" onChange={(e) => setTitle(e.target.value)} className="w-full h-full p-1 text-black" />
                 </div>
                 <div className=" w-full h-1/3 py-4 ">
-                    <input type="text" value={desc} placeholder="Digite a descrição da Tarefa" onChange={(e) => setDesc(e.target.value)} className="w-full h-full p-1 text-black"  />
+                    <input type="text" value={desc} placeholder="Digite a descrição da Tarefa" onChange={(e) => setDesc(e.target.value)} className="w-full h-full p-1 text-black" />
                 </div>
                 <div className=" w-full h-1/3 py-4 ">
                     <input type="number" value={prioridade} onChange={(e) => setPrioridade(e.target.value)} placeholder="Selecione a prioridade da tarefa" className="outline w-full h-full p-1 text-black" />
