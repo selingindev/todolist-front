@@ -66,16 +66,16 @@ const Todo = (props) => {
                     .filter((todo) => todo.done === props.filter)
                     .map((todo) => (
                         console.log(todos),
-                        <div key={todo.id} className={`flex max-w-96 h-48 border m-4 p-2 border-dark-background dark:border-light-background`}>
+                        <div key={todo.id} className={`flex max-w-96 h-auto border m-4 p-2 border-dark-background dark:border-light-background`}>
                             {/* lado esquerdo container */}
-                            <div className="w-5/6 h-full py-4 mx-2 flex flex-col justify-around">
+                            <div className="w-5/6 h-full  mx-2 flex flex-col justify-around">
                                 {/* superior container */}
-                                <div className="h-auto w-auto my-2">
+                                <div className="h-1/3 w-auto flex flex-col justify-center p-2">
                                     <h1 className="w-full h-auto text-xl font-semibold text-black dark:text-white">{todo.title}</h1>
                                 </div>
 
                                 {/* inferior container */}
-                                <div className="h-auto w-auto">
+                                <div className="h-2/3 w-auto p-2">
                                     <p className=" text-lg  text-black dark:text-white">{todo.desc}</p>
                                 </div>
                             </div>
