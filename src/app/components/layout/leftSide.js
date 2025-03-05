@@ -9,10 +9,10 @@ const leftSide = () => {
                     <ThemeToggle></ThemeToggle>
                 </div>
             </div>
-            <div className="flex flex-col w-full h-auto justify-center my-6">
+            <div className="flex-col w-full h-auto justify-center my-6 hidden lg:flex ">
 
-                <div className="w-full h-auto flex justify-center mb-2 ">
-                    <h1 className="text-3xl font-sans font-bold text-black dark:text-white">TAREFAS CONCLUIDAS</h1>
+                <div className="w-full h-auto flex justify-center mb-2 p-2 ">
+                    <h1 className=" lg:text-2xl lg:font-semibold xl:text-3xl font-sans font-bold text-black dark:text-white">TAREFAS CONCLUIDAS</h1>
                 </div>
                 <div className="">
                     <Todo filter={true} ></Todo>
