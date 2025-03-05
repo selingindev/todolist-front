@@ -99,10 +99,13 @@ const Todo = (props) => {
                                         </button>
                                     </div>
                                 </div>
-                                : <div className=" w-1/6 h-full flex justify-end">
-                                    <button className="flex justify-end h-auto w-auto m-2" onClick={() => cancelComplet(todo)}>
-                                        <LiaUndoAltSolid className="" color={theme === 'light' ? "#212121" : "#E0E0E0"} size={35} />
+                                : <div className=" w-1/6 h-full flex flex-col justify-end">
+                                    <button className="flex  justify-end h-auto w-auto m-2" onClick={() => cancelComplet(todo)}>
+                                        <LiaUndoAltSolid className="" color={theme === 'light' ? "#212121" : "#E0E0E0"} size={30} />
                                     </button>
+                                    <button onClick={() => handleDelete(todo.id)} className="flex justify-end w-auto h-auto m-1">
+                                            <MdDelete color={theme === 'light' ? "#212121" : "#E0E0E0"} size={30} />
+                                        </button>
                                 </div>}
                         </div>
                     ))}
