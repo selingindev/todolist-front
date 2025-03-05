@@ -11,15 +11,15 @@ const ThemeToggle = () => {
   }, [theme])
 
   return (
-    <div>    
-      <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} className="p-2 rounded-full bg-light-card transition border border-dark-background dark:border-red-600">
-      <img
-        src={theme === "light" ? "/darkTheme.png" : "/light.png"}
-        alt={theme === "light" ? "Modo Escuro" : "Modo Claro"}
-        className={`w-6 h-6 p-0`}
+    <div>
+      <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} className="p-2 rounded-full border border-gray-200 transition dark:bg-light-card">
+        <img
+          src={theme === "light" ? "/darkTheme.png" : "/light.png"}
+          alt={theme === "light" ? "Modo Escuro" : "Modo Claro"}
+          className={`w-6 h-6 p-0`}
 
-      />
-    </button>
+        />
+      </button>
     </div>
 
   );
